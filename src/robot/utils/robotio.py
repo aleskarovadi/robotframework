@@ -14,12 +14,14 @@
 #  limitations under the License.
 
 import io
+import os
 
 from .platform import PY3
 
 
 def file_writer(path=None, encoding='UTF-8', newline=None):
     if path:
+        os.makedirs(os.path.dirname(path), exist_ok=True)
         f = io.open(path, 'w', encoding=encoding, newline=newline)
     else:
         f = io.StringIO(newline=newline)
